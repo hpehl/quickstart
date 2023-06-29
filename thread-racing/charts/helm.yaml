@@ -1,6 +1,6 @@
 build:
-  uri: https://github.com/wildfly/quickstart.git
-  ref: main
+  uri: https://github.com/hpehl/quickstart.git
+  ref:  glow-thread-racing
   contextDir: thread-racing
 deploy:
   replicas: 1
