@@ -1,6 +1,6 @@
 build:
   uri: https://github.com/hpehl/quickstart.git
-  ref: ee-security
+  ref: glow-ee-security
   contextDir: ee-security
 deploy:
   replicas: 1
