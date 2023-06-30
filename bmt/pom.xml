@@ -45,7 +45,9 @@
 
     <properties>
         <!-- The versions for BOMs, Dependencies and Plugins -->
+        <version.server>wf-29.0.0.Final</version.server>
         <version.server.bom>28.0.1.Final</version.server.bom>
+        <version.wildfly.maven.plugin>4.1.1.Final-SNAPSHOT</version.wildfly.maven.plugin>
     </properties>
 
     <repositories>
@@ -161,5 +163,58 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-    
+
+    <profiles>
+        <profile>
+            <id>provisioned-server</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <version>${version.wildfly.maven.plugin}</version>
+                        <configuration>
+                            <discover-provisioning-info>
+                                <version>${version.server}</version>
+                            </discover-provisioning-info>
+                            <runtimeName>ROOT.war</runtimeName>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>package</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>openshift</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <version>${version.wildfly.maven.plugin}</version>
+                        <configuration>
+                            <discover-provisioning-info>
+                                <version>${version.server}</version>
+                                <context>cloud</context>
+                            </discover-provisioning-info>
+                            <filename>ROOT.war</filename>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>package</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
