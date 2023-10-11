@@ -44,9 +44,9 @@
 
     <properties>
         <!-- The versions for BOMs, Dependencies and Plugins -->
-        <version.server.bom>28.0.1.Final</version.server.bom>
+        <version.server.bom>29.0.0.Final</version.server.bom>
         <version.server>wf-29.0.0.Final</version.server>
-        <version.wildfly.maven.plugin>4.1.1.Final-SNAPSHOT</version.wildfly.maven.plugin>
+        <version.wildfly.maven.plugin>5.0.0.Alpha2</version.wildfly.maven.plugin>
         <version.cloud.fp>3.0.0.Final</version.cloud.fp>
     </properties>
 
